@@ -5,22 +5,29 @@ import { TrendingUp, Activity, DollarSign } from "lucide-react";
 function App() {
   const [price, setPrice] = useState(0);
   const [prevPrice, setPrevPrice] = useState(0);
+  // Tambahkan state baru untuk data grafik
+  const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
-    // Membuka koneksi ke Binance WebSocket
-    const ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
+    const ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@kline_1m"); // Gunakan stream kline/candlestick
 
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      const newPrice = parseFloat(data.p).toFixed(2);
+      const kline = data.k;
 
-      setPrice((prev) => {
-        setPrevPrice(prev); // Simpan harga lama untuk efek warna (naik/turun)
-        return newPrice;
-      });
+      const formattedData = {
+        time: kline.t / 1000, // Binance memberikan milidetik, library butuh detik
+        open: parseFloat(kline.o),
+        high: parseFloat(kline.h),
+        low: parseFloat(kline.l),
+        close: parseFloat(kline.c),
+      };
+
+      setPrice(formattedData.close.toFixed(2));
+      setChartData(formattedData);
     };
 
-    return () => ws.close(); // Tutup koneksi saat komponen tidak dipakai
+    return () => ws.close();
   }, []);
 
   // Menentukan warna berdasarkan pergerakan harga
@@ -49,8 +56,10 @@ function App() {
         </div>
 
         {/* Card Slot untuk Fitur Lain (Misal: RSI atau Sentiment) */}
-        <div className="bg-slate-800 p-6 rounded-2xl border border-slate-700 md:col-span-2">
-          <p className="text-slate-400">Chart Area (Akan kita tambahkan selanjutnya)</p>
+        {/* Card Slot untuk Chart */}
+        <div className="bg-slate-800 p-6 rounded-2xl border border-slate-700 md:col-span-2 shadow-xl">
+          <h2 className="text-slate-400 mb-4 font-medium">BTC/USDT 1m Chart</h2>
+          <PriceChart data={chartData} />
         </div>
       </main>
     </div>
