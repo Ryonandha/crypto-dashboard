@@ -1,6 +1,7 @@
+// postcss.config.js lama
 export default {
   plugins: {
-    "@tailwindcss/postcss": {},
+    tailwindcss: {}, // Ini penyebab error di Tailwind v4
     autoprefixer: {},
   },
 };

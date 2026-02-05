@@ -1,13 +1,12 @@
 // src/components/PriceChart.jsx
 import React, { useEffect, useRef } from "react";
-import { createChart } from "lightweight-charts";
+import { createChart, CandlestickSeries } from "lightweight-charts"; // Import CandlestickSeries
 
 const PriceChart = ({ data }) => {
   const chartContainerRef = useRef();
   const seriesRef = useRef();
 
   useEffect(() => {
-    // 1. Inisialisasi Chart
     const chart = createChart(chartContainerRef.current, {
       layout: { background: { color: "#1e293b" }, textColor: "#94a3b8" },
       grid: { vertLines: { color: "#334155" }, horzLines: { color: "#334155" } },
@@ -15,8 +14,8 @@ const PriceChart = ({ data }) => {
       height: 300,
     });
 
-    // 2. Tambahkan Series Candlestick
-    const candleSeries = chart.addCandlestickSeries({
+    // PERBAIKAN DI SINI: Gunakan addSeries dengan CandlestickSeries
+    const candleSeries = chart.addSeries(CandlestickSeries, {
       upColor: "#4ade80",
       downColor: "#f87171",
       borderVisible: false,
@@ -26,7 +25,6 @@ const PriceChart = ({ data }) => {
 
     seriesRef.current = candleSeries;
 
-    // Responsive chart saat window di-resize
     const handleResize = () => {
       chart.applyOptions({ width: chartContainerRef.current.clientWidth });
     };
@@ -38,7 +36,6 @@ const PriceChart = ({ data }) => {
     };
   }, []);
 
-  // 3. Update data secara real-time
   useEffect(() => {
     if (seriesRef.current && data) {
       seriesRef.current.update(data);
