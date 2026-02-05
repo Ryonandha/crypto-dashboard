@@ -1,4 +1,3 @@
----
 
 # 🚀 Crypto Pulse Dashboard
 
@@ -25,34 +24,32 @@ Dashboard pemantauan harga Cryptocurrency secara *real-time* yang dibangun denga
 
 1. **Clone Repository**
 ```bash
-git clone https://github.com/USERNAME/crypto-dashboard.git
+git clone [https://github.com/USERNAME/crypto-dashboard.git](https://github.com/USERNAME/crypto-dashboard.git)
 cd crypto-dashboard
 
 ```
 
-
 2. **Instal Dependensi**
 Pastikan Anda menginstal paket `@tailwindcss/postcss` untuk mendukung Tailwind v4.
+
 ```bash
 npm install
 
 ```
 
-
 3. **Jalankan Development Server**
+
 ```bash
 npm run dev
 
 ```
 
-
 4. **Build untuk Produksi**
+
 ```bash
 npm run build
 
 ```
-
-
 
 ## 📂 Struktur Proyek
 
@@ -70,4 +67,4 @@ src/
 
 Proyek ini dibuat untuk tujuan pembelajaran dan portofolio. Bebas digunakan dan dimodifikasi.
 
----
+```
