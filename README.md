@@ -1,16 +1,69 @@
-# React + Vite
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🚀 Crypto Pulse Dashboard
 
-Currently, two official plugins are available:
+Dashboard pemantauan harga Cryptocurrency secara *real-time* yang dibangun dengan teknologi web terbaru. Proyek ini mendemonstrasikan integrasi data *live stream* menggunakan WebSocket untuk memberikan pembaruan harga instan tanpa perlu memuat ulang halaman.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Fitur Utama
 
-## React Compiler
+* **Live Price Streaming**: Pembaruan harga instan menggunakan Binance WebSocket API (`@kline_1m`).
+* **Real-time Candlestick Chart**: Visualisasi pergerakan harga yang interaktif menggunakan `lightweight-charts`.
+* **Multi-Asset Support**: Beralih dengan mudah antara Bitcoin (BTC), Ethereum (ETH), dan Solana (SOL).
+* **24h Statistics**: Menampilkan data harga tertinggi (High) dan terendah (Low) dalam siklus kline yang aktif.
+* **Responsive Design**: Antarmuka modern yang dibangun dengan Tailwind CSS v4.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+* **Framework**: [React 19](https://react.dev/)
+* **Build Tool**: [Vite](https://vitejs.dev/)
+* **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) & [PostCSS](https://postcss.org/)
+* **Charts**: [Lightweight Charts v5](https://tradingview.github.io/lightweight-charts/)
+* **Icons**: [Lucide React](https://lucide.dev/)
+* **Data Source**: [Binance WebSocket API](https://www.google.com/search?q=https://binance-docs.github.io/apidocs/spot/en/%23websocket-market-streams)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Cara Menjalankan Secara Lokal
+
+1. **Clone Repository**
+```bash
+git clone https://github.com/USERNAME/crypto-dashboard.git
+cd crypto-dashboard
+
+```
+
+2. **Instal Dependensi**
+Pastikan Anda menginstal paket `@tailwindcss/postcss` untuk mendukung Tailwind v4.
+```bash
+npm install
+
+```
+
+3. **Jalankan Development Server**
+```bash
+npm run dev
+
+```
+
+4. **Build untuk Produksi**
+```bash
+npm run build
+
+```
+
+
+## 📂 Struktur Proyek
+
+```text
+src/
+├── assets/             # Aset statis (gambar/ikon)
+├── components/         # Komponen UI (PriceChart, dll)
+├── App.jsx             # Logika utama & integrasi WebSocket
+├── main.jsx            # Entry point aplikasi
+└── index.css           # Konfigurasi global Tailwind v4
+
+```
+
+## 📝 Lisensi
+
+Proyek ini dibuat untuk tujuan pembelajaran dan portofolio. Bebas digunakan dan dimodifikasi.
+
+---
