@@ -30,6 +30,7 @@ cd crypto-dashboard
 
 ```
 
+
 2. **Instal Dependensi**
 Pastikan Anda menginstal paket `@tailwindcss/postcss` untuk mendukung Tailwind v4.
 ```bash
@@ -37,17 +38,20 @@ npm install
 
 ```
 
+
 3. **Jalankan Development Server**
 ```bash
 npm run dev
 
 ```
 
+
 4. **Build untuk Produksi**
 ```bash
 npm run build
 
 ```
+
 
 
 ## 📂 Struktur Proyek
